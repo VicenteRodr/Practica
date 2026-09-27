@@ -8,6 +8,7 @@ import {
   personOutline,
   helpCircleOutline,
   logOutOutline,
+  shieldCheckmarkOutline,
 } from 'ionicons/icons'
 import { usuario } from '../data/datosPrueba'
 import './MenuLateral.css'
@@ -70,6 +71,20 @@ function MenuLateral({ tipo }) {
           {opcion.badge > 0 && <span className="badge">{opcion.badge}</span>}
         </button>
       ))}
+
+      <div className="menu-cambio-perfil">
+        <button
+          className="btn-cambio-perfil"
+          onClick={() => {
+            const menu = document.querySelector('ion-menu')
+            if (menu) menu.close()
+            router.push(esFuncionario ? '/inicio' : '/revisar-solicitudes')
+          }}
+        >
+          <IonIcon icon={esFuncionario ? personOutline : shieldCheckmarkOutline} />
+          <span>{esFuncionario ? 'Cambiar a Ciudadano' : 'Cambiar a Administrador'}</span>
+        </button>
+      </div>
     </nav>
   )
 }
