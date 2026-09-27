@@ -7,7 +7,18 @@ import './AppLayout.css'
 
 // layout para las paginas despues de iniciar sesion (menu, header y footer)
 // asi las otras pantallas solo ponen su contenido adentro
-function AppLayout({ children }) {
+function AppLayout({
+  children,
+  tituloDesktop = <>Santo Domingo:<br />Responde</>,
+  subtitulo = <>Gestión y seguimiento de<br />solicitudes ciudadanas</>,
+  tituloMovil = <>Santo Domingo:<br />Responde</>,
+  nombreUsuario = usuario.nombre,
+  notificaciones = usuario.notificaciones,
+  notificacionesMovil,
+  tipoMenu = 'vecino',
+}) {
+  const badgeMovil = notificacionesMovil !== undefined ? notificacionesMovil : notificaciones
+
   return (
     <IonPage>
       <IonContent>
@@ -17,29 +28,29 @@ function AppLayout({ children }) {
           {/* header azul que solo sale en el celu */}
           <div className="header-movil">
             <IonMenuButton autoHide={false} />
-            <p>Santo Domingo:<br />Responde</p>
-            <Campana cantidad={usuario.notificaciones} />
+            <p className="titulo-header-movil">{tituloMovil}</p>
+            <Campana cantidad={badgeMovil} />
           </div>
           <div className="app-ola ola-movil-app"></div>
 
           <div className="app-cuerpo">
             <aside className="sidebar">
-              <MenuLateral />
+              <MenuLateral tipo={tipoMenu} />
             </aside>
 
             <main className="app-main">
               <header className="app-header">
                 <div className="app-titulos">
-                  <h1>Santo Domingo:<br />Responde</h1>
-                  <p>Gestión y seguimiento de<br />solicitudes ciudadanas</p>
+                  <h1>{tituloDesktop}</h1>
+                  <p>{subtitulo}</p>
                 </div>
                 <div className="app-ola"></div>
 
                 <div className="header-acciones">
-                  <Campana cantidad={usuario.notificaciones} />
+                  <Campana cantidad={notificaciones} />
                   <div className="usuario">
                     <div className="avatar"><IonIcon icon={personOutline} /></div>
-                    <span>{usuario.nombre}</span>
+                    <span>{nombreUsuario}</span>
                     <IonIcon icon={chevronDown} className="flechita" />
                   </div>
                 </div>

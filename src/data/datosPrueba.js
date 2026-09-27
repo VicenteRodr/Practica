@@ -34,3 +34,31 @@ export const solicitudes = [
   { folio: '#SD-2026-0011', fecha: '01 sept 2026', tipo: 'Aseo y limpieza', descripcion: 'Retiro de escombros', estado: 'En proceso' },
   { folio: '#SD-2026-0010', fecha: '28 ago 2026', tipo: 'Áreas verdes', descripcion: 'Poda de árboles en plaza', estado: 'Resuelto' },
 ]
+
+export const solicitudesFuncionario = [
+  {
+    folio: '#AAABBB123',
+    fecha: '13/09/2026',
+    ciudadano: 'Ana Paula',
+    tipo: 'Alumbrado',
+    detalle: 'Foco apagado ...',
+    estado: 'En revisión',
+  },
+  {
+    folio: '#AAABBB124',
+    fecha: '13/09/2026',
+    ciudadano: 'Juan Pérez',
+    tipo: 'Alumbrado',
+    detalle: 'Foco apagado ...',
+    estado: 'En revisión',
+  },
+  {
+    folio: '#AAABBB125',
+    fecha: '13/09/2026',
+    ciudadano: 'Daniel carvajal',
+    tipo: 'Alumbrado',
+    detalle: 'Foco apagado ...',
+    estado: 'En revisión',
+  },
+]
+

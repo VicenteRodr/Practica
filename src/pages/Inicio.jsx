@@ -17,9 +17,9 @@ function Inicio() {
           <h2>Hola {primerNombre}, bienvenido a Santo Domingo Responde</h2>
           <p>Gestiona tus solicitudes, revisa su estado y mantente informado sobre cada avance desde un solo lugar.</p>
           <div className="bienvenida-links">
-            <a href="#">Ingresa nuevos reclamos</a>
+            <a href="/ingreso-reclamo">Ingresa nuevos reclamos</a>
             <span>|</span>
-            <a href="#">Consulta el estado de tus trámites</a>
+            <a href="/revisar-solicitudes">Consulta el estado de tus trámites</a>
             <span>|</span>
             <a href="#">Recibe notificaciones de avance</a>
           </div>
@@ -43,7 +43,7 @@ function Inicio() {
       <section className="recientes">
         <div className="recientes-top">
           <h2>Mis solicitudes recientes</h2>
-          <a href="#">Ver todas <IonIcon icon={arrowForward} /></a>
+          <a href="/revisar-solicitudes">Ver todas <IonIcon icon={arrowForward} /></a>
         </div>
 
         {/* tabla para desktop */}

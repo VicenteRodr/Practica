@@ -6,15 +6,15 @@ import {
   addCircleOutline,
   notificationsOutline,
   personOutline,
-  helpCircleOutline
+  helpCircleOutline,
+  logOutOutline,
 } from 'ionicons/icons'
 import { usuario } from '../data/datosPrueba'
 import './MenuLateral.css'
 
-// las que no tienen ruta es porque todavia no hacemos esa pagina
-const opciones = [
+const opcionesVecino = [
   { nombre: 'Inicio', icono: homeOutline, ruta: '/inicio' },
-  { nombre: 'Mis solicitudes', icono: documentTextOutline },
+  { nombre: 'Mis solicitudes', icono: documentTextOutline, ruta: '/revisar-solicitudes' },
   { nombre: 'Nueva solicitud', icono: addCircleOutline },
   { nombre: 'Ingresar reclamo', iconoCustom: '/img/alerta-usuario.svg', ruta: '/ingreso-reclamo' }, 
   { nombre: 'Notificaciones', icono: notificationsOutline, badge: usuario.notificaciones },
@@ -22,9 +22,25 @@ const opciones = [
   { nombre: 'Ayuda', icono: helpCircleOutline },
 ]
 
-function MenuLateral() {
+const opcionesFuncionario = [
+  { nombre: 'Inicio', icono: homeOutline, ruta: '/inicio' },
+  { nombre: 'Revisar solicitudes', icono: documentTextOutline, ruta: '/revisar-solicitudes' },
+  { nombre: 'Revisar reclamo', iconoCustom: '/img/alerta-usuario.svg', ruta: '/ingreso-reclamo' },
+  { nombre: 'Notificaciones', icono: notificationsOutline, badge: 3 },
+  { nombre: 'Mi Perfil', icono: personOutline },
+  { nombre: 'Cerrar Sesión', icono: logOutOutline, ruta: '/login' },
+]
+
+function MenuLateral({ tipo }) {
   const router = useIonRouter()
   const location = useLocation()
+
+  const esFuncionario =
+    tipo === 'funcionario' ||
+    location.pathname === '/revisar-solicitudes' ||
+    location.pathname === '/panel-gestion'
+
+  const listaOpciones = esFuncionario ? opcionesFuncionario : opcionesVecino
 
   const irA = (opcion) => {
     // cierra el menu del celu (en desktop no hace nada)
@@ -39,7 +55,7 @@ function MenuLateral() {
     <nav className="menu-lateral">
       <img className="menu-logo" src="/img/logo.png" alt="Municipalidad de Santo Domingo" />
 
-      {opciones.map((opcion) => (
+      {listaOpciones.map((opcion) => (
         <button
           key={opcion.nombre}
           className={location.pathname === opcion.ruta ? 'menu-item activo' : 'menu-item'}
